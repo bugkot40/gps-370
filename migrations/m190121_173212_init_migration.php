@@ -12,7 +12,45 @@ class m190121_173212_init_migration extends Migration
      */
     public function safeUp()
     {
-
+		$this->createTable('ps',[
+			'id' => $this->primaryKey(),
+			'number' => $this->string()->unique(),
+			'name' => $this->string()->unique()
+		]);
+		
+		$this->createTable('connection',[
+			'id' => $this->primaryKey(),
+			'name' => $this->string(),
+			'ps_id' => $this->integer(),
+			'instruction_id' => $this->integer(),
+			'scheme_id' => $this->integer()
+		]);
+		
+		$this->createTable('instruction',[
+			'id' => $this->primaryKey(),
+			'conection_id' => $this->integer(),
+			'name' => $this->string()
+		]);
+		
+		$this->createTable('scheme',[
+			'id' => $this->primaryKey(),
+			'conection_id' => $this->integer(),
+			'name' => $this->string()
+		]);
+		
+		$this->createTable('test', [
+			'id' => $this->primaryKey(),
+			'name' => $this->string()->unique()
+		]);
+		
+		$this->createTable('question', [
+			'id' => $this->primaryKey(),
+			'test_id' => $this->integer(),
+			'link' => $this->string(),
+			'question' => $this->string(),
+			'answer' => $this->text()
+		]);
+		
     }
 
     /**
@@ -20,23 +58,12 @@ class m190121_173212_init_migration extends Migration
      */
     public function safeDown()
     {
-        echo "m190121_173212_init_migration cannot be reverted.\n";
-
-        return false;
+		$this->dropTable('ps');
+		$this->dropTable('connection');
+		$this->dropTable('instruction');
+		$this->dropTable('scheme');
+		$this->dropTable('test');
+		$this->dropTable('question');
     }
 
-    /*
-    // Use up()/down() to run migration code without a transaction.
-    public function up()
-    {
-
-    }
-
-    public function down()
-    {
-        echo "m190121_173212_init_migration cannot be reverted.\n";
-
-        return false;
-    }
-    */
 }
