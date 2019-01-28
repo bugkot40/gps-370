@@ -14,12 +14,12 @@ class m190128_021122_init_migration extends Migration
         $this->addColumn('question', 'image', $this->string());
 
         $this->addForeignKey('connection-ps_id-fk', 'connection', 'ps_id', 'ps', 'id', 'CASCADE', 'CASCADE');
-        $this->addForeignKey('connection-instruction_id-fk', 'connection', 'instruction_id', 'instruction', 'id', 'SET_NULL', 'CASCADE');
-        $this->addForeignKey('connection-scheme_id-fk', 'connection', 'scheme_id', 'scheme', 'id', 'SET_NULL', 'CASCADE');
+        $this->addForeignKey('connection-instruction_id-fk', 'connection', 'instruction_id', 'instruction', 'id', 'SET NULL', 'CASCADE');
+        $this->addForeignKey('connection-scheme_id-fk', 'connection', 'scheme_id', 'scheme', 'id', 'SET NULL', 'CASCADE');
 
-        $this->addForeignKey('instruction-connection_id-fk', 'instruction', 'connection_id', 'connection', 'id', 'SET_NULL', 'CASCADE');
+        $this->addForeignKey('instruction-connection_id-fk', 'instruction', 'connection_id', 'connection', 'id', 'SET NULL', 'CASCADE');
 
-        $this->addForeignKey('scheme-connection_id-fk', 'scheme', 'connection_id', 'connection', 'id', 'SET_NULL', 'CASCADE');
+        $this->addForeignKey('scheme-connection_id-fk', 'scheme', 'connection_id', 'connection', 'id', 'SET NULL', 'CASCADE');
 
         $this->addForeignKey('question-test_id-fk', 'question', 'test_id', 'test', 'id', 'CASCADE', 'CASCADE');
 
