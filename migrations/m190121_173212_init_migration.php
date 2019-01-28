@@ -28,13 +28,13 @@ class m190121_173212_init_migration extends Migration
 		
 		$this->createTable('instruction',[
 			'id' => $this->primaryKey(),
-			'conection_id' => $this->integer(),
+			'connection_id' => $this->integer(),
 			'name' => $this->string()
 		]);
 		
 		$this->createTable('scheme',[
 			'id' => $this->primaryKey(),
-			'conection_id' => $this->integer(),
+			'connection_id' => $this->integer(),
 			'name' => $this->string()
 		]);
 		
