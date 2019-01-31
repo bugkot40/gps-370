@@ -47,8 +47,9 @@ class m190121_173212_init_migration extends Migration
 			'id' => $this->primaryKey(),
 			'test_id' => $this->integer(),
 			'link' => $this->string(),
-			'question' => $this->string(),
-			'answer' => $this->text()
+			'question' => $this->text(),
+			'answer' => $this->text(),
+			'image' => $this->string()
 		]);
 		
     }
