@@ -12,6 +12,15 @@ class m190128_102752_init_migration extends Migration
      */
     public function safeUp()
     {
+		$ps =[
+			'ПС-134 Суздальская',
+			'ПС-124 Гражданская',
+			'ПС-29 Сосновская',
+			'ПС-103 Завод Светлана',
+			'ПС-370 ПГВ-2 Светлана',
+			'ПС-93 Завод Либкнехта'
+		];
+		
 		$tests = [
 			'Правила по охране труда при эксплуатации электроустановок',
 			'Правила технической эксплуатации электрических станций и сетей РФ',
@@ -29,11 +38,18 @@ class m190128_102752_init_migration extends Migration
 			'Микс-Тест-РЗА'
 		];	
 		
+		foreach ($ps as $ps){
+			$this->insert('ps', [
+				'name' => $ps, 
+			]);
+		}
+		
 		foreach ($tests as $test){
 			$this->insert('test', [
 				'name' => $test, 
 			]);
-		}
+		}		
+		
     }
 
     /**
@@ -42,6 +58,8 @@ class m190128_102752_init_migration extends Migration
     public function safeDown()
     {
 		$this->delete('test');
+		$this->delete('ps');
+		
     }
 
 }

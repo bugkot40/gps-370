@@ -13,8 +13,7 @@ class m190121_173212_init_migration extends Migration
     public function safeUp()
     {
 		$this->createTable('ps',[
-			'id' => $this->primaryKey(),
-			'number' => $this->string()->unique(),
+			'id' => $this->primaryKey(),		
 			'name' => $this->string()->unique()
 		]);
 		
@@ -49,7 +48,8 @@ class m190121_173212_init_migration extends Migration
 			'link' => $this->string(),
 			'question' => $this->text(),
 			'answer' => $this->text(),
-			'image' => $this->string()
+			'image' => $this->string(),
+			'use' => $this->boolean()->defaultValue(false)
 		]);
 		
     }
