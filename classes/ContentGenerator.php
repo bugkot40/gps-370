@@ -27,13 +27,9 @@ class ContentGenerator
 			'use' => false,
 			'test_id' => $testId
 		])->asArray()->all();
-		foreach($questions as $question){
-			$ids[] = $question['id'];
-		}
-		debug($ids);
-		$id=shuffle($ids);
-		debug($id);
-		
+
+		shuffle($questions);
+		debug($questions);
 	}
 	
 }
