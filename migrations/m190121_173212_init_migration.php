@@ -12,6 +12,10 @@ class m190121_173212_init_migration extends Migration
      */
     public function safeUp()
     {
+		
+		/**
+		* db gps
+		*/
 		$this->createTable('ps',[
 			'id' => $this->primaryKey(),		
 			'name' => $this->string()->unique()
@@ -37,10 +41,20 @@ class m190121_173212_init_migration extends Migration
 			'name' => $this->string()
 		]);
 		
-		$this->createTable('test', [
+		
+		/**
+		*	db тестов 
+		*/
+		$this->createTable('mix',[
 			'id' => $this->primaryKey(),
 			'name' => $this->string()->unique()
-		]);
+		]);		
+		
+		$this->createTable('test', [
+			'id' => $this->primaryKey(),
+			'mix_id' => $this->integer(),
+			'name' => $this->string()->unique()
+		]);		
 		
 		$this->createTable('question', [
 			'id' => $this->primaryKey(),
@@ -59,12 +73,15 @@ class m190121_173212_init_migration extends Migration
      */
     public function safeDown()
     {
-		$this->dropTable('ps');
-		$this->dropTable('connection');
-		$this->dropTable('instruction');
-		$this->dropTable('scheme');
-		$this->dropTable('test');
 		$this->dropTable('question');
+		$this->dropTable('test');
+		$this->dropTable('mix');
+		
+		$this->dropTable('scheme');
+		$this->dropTable('instruction');
+		$this->dropTable('connection');
+		$this->dropTable('ps');	
+		
     }
 
 }

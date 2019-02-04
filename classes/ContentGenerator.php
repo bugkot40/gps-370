@@ -27,9 +27,20 @@ class ContentGenerator
 			'use' => false,
 			'test_id' => $testId
 		])->asArray()->all();
-
-		shuffle($questions);
-		debug($questions);
+				
+		if($questions){
+			shuffle($questions);	
+			$question = Question::find()->where([
+				'id' => $questions[0]['id'],
+			])->one();
+			
+			$question->use = true;
+			$question->save();
+			return $question;
+		}
+		
+		return false
+		
 	}
 	
 }
